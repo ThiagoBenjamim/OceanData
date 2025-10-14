@@ -1,7 +1,8 @@
-import cv2 as cv
+#import cv2 as cv
 import smtplib
 from email.message import EmailMessage
-import keyboard
+#import keyboard
+#import plotly.express as px
 
 
 SMTPPort = int(input("Digite o número da porta SMTP que deseja utilizar:"))
@@ -21,4 +22,6 @@ message = EmailMessage()
 message['Subject'] = "Alerta ecológico!!!"
 message['From'] = emailLogin
 
-while True: #loop de ações
+#df = px.data.gapminder().query("continent=='Oceania'")
+#fig = px.line(df, x="year", y="lifeExp", color='country')
+#fig.show()
