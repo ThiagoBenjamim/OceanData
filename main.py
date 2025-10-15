@@ -60,14 +60,14 @@ dimen = graf.add_subplot(1, 1, 1)
 def animar(i):
     xs = []
     ys = []
-    for j in range(30):    
+    for j in range(30):
         xs.append(j)
         ys.append(ran.randint(16, 19))
     if keyboard.is_pressed('t'):
         ys[:] = [40] * len(ys)
     dimen.clear()
     dimen.plot(xs, ys)
-    plt.ylabel('Temperatura(C°)')
+    dimen.set_ylabel('Temperatura(C°)')
     
 
 ani = animation.FuncAnimation(graf, animar, interval=1000)
@@ -80,13 +80,44 @@ def animar2(i):
     ys = []
     for j in range(30):    
         xs.append(j)
-        ys.append(ran.randint(16, 19))
-    if keyboard.is_pressed('t'):
-        ys[:] = [40] * len(ys)
+        ys.append(ran.randint(3300, 3682))
     dimen2.clear()
     dimen2.plot(xs, ys)
-    plt.ylabel('Temperatura(C°)')
+    dimen2.set_ylabel('Profundidade(M)')
     
 
 ani2 = animation.FuncAnimation(graf2, animar2, interval=1000)
+
+graf3 = p.figure()
+dimen3 = graf3.add_subplot(1, 1, 1)
+
+def animar3(i):
+    xs = []
+    ys = []
+    for j in range(30):    
+        xs.append(j)
+        ys.append(ran.randint(34, 36))
+    dimen3.clear()
+    dimen3.plot(xs, ys)
+    dimen3.set_ylabel('Salinidade(g/Kg)')
+    
+
+ani3 = animation.FuncAnimation(graf3, animar3, interval=1000)
+
+graf4 = p.figure()
+dimen4 = graf4.add_subplot(1, 1, 1)
+
+def animar4(i):
+    xs = []
+    ys = []
+    for j in range(30):    
+        xs.append(j)
+        ys.append(ran.randint(80, 90))
+    dimen4.clear()
+    dimen4.plot(xs, ys)
+    dimen4.set_ylabel('pH*10')
+
+ani4 = animation.FuncAnimation(graf4, animar4, interval=1000)
+
 plt.show()
+
