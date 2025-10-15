@@ -1,8 +1,12 @@
 #import cv2 as cv
 import smtplib
 from email.message import EmailMessage
-#import keyboard
-#import plotly.express as px
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from matplotlib import style
+import random as ran
+import keyboard
+import pylab as p
 
 
 SMTPPort = 465 # Foi a única porta que funcionou até agora
@@ -48,6 +52,41 @@ finally:
     except:
         pass
 
-#df = px.data.gapminder().query("continent=='Oceania'")
-#fig = px.line(df, x="year", y="lifeExp", color='country')
-#fig.show()
+style.use("fivethirtyeight")
+
+graf = p.figure()
+dimen = graf.add_subplot(1, 1, 1)
+
+def animar(i):
+    xs = []
+    ys = []
+    for j in range(30):    
+        xs.append(j)
+        ys.append(ran.randint(16, 19))
+    if keyboard.is_pressed('t'):
+        ys[:] = [40] * len(ys)
+    dimen.clear()
+    dimen.plot(xs, ys)
+    plt.ylabel('Temperatura(C°)')
+    
+
+ani = animation.FuncAnimation(graf, animar, interval=1000)
+
+graf2 = p.figure()
+dimen2 = graf2.add_subplot(1, 1, 1)
+
+def animar2(i):
+    xs = []
+    ys = []
+    for j in range(30):    
+        xs.append(j)
+        ys.append(ran.randint(16, 19))
+    if keyboard.is_pressed('t'):
+        ys[:] = [40] * len(ys)
+    dimen2.clear()
+    dimen2.plot(xs, ys)
+    plt.ylabel('Temperatura(C°)')
+    
+
+ani2 = animation.FuncAnimation(graf2, animar2, interval=1000)
+plt.show()
