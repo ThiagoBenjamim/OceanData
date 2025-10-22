@@ -1,4 +1,3 @@
-#import cv2 as cv
 import smtplib
 from email.message import EmailMessage
 import matplotlib.pyplot as plt
@@ -7,11 +6,13 @@ from matplotlib import style
 import random as ran
 import keyboard
 import pylab as p
-
+import cv2
+import time
+from ultralytics import YOLO
 
 SMTPPort = 465 # Foi a única porta que funcionou até agora
-emailLogin = input("Digite o email do remetente:") # Email do Remetente
-emailSenha = input("Digite a senha do email remetente:") # Senha de APP
+emailLogin = "ocean25data@gmail.com"#input("Digite o email do remetente:").strip() # Email do Remetente
+emailSenha = "sbeu oygy wnsn wfxu"#input("Digite a senha do email remetente:").strip() # Senha de APP
 
 try:
     # Criar conexão com servidor e entrar na conta
@@ -21,9 +22,9 @@ try:
 
     # Coleta dos destinatários
     destinatarios = []
-    num = int(input("Digite quantos destinatários deseja ter:"))
+    num = 1#int(input("Digite quantos destinatários deseja ter:"))
     for i in range(num):
-        destinatario = input("Digite o email do destinatário " + str(i+1) + ":")
+        destinatario = "yeshuarck@gmail.com"#input("Digite o email do destinatário " + str(i+1) + ":")
         destinatarios.append(destinatario)
 
     message = EmailMessage() # Criar objeto da Mensagem
@@ -32,8 +33,8 @@ try:
     message.set_content("Este é um alerta ecológico automático.") # Conteúdo da Mensagem
     message['To'] = ", ".join(destinatarios) # Destinatários da Mensagem
 
-    s.send_message(message) # Enviar Mensagem
-    print("Email enviado com sucesso!") # Aviso de mensagem bem sucedida
+    #s.send_message(message) # Enviar Mensagem
+    #print("Email enviado com sucesso!") # Aviso de mensagem bem sucedida
 
 except smtplib.SMTPAuthenticationError:
     print("Erro de autenticação: verifique seu email e senha.")
@@ -48,9 +49,11 @@ except Exception as e:
     print(f"Ocorreu um erro: {e}")
 finally:
     try:
-        s.quit()  # Fechar conexão com servidor SMTP (em todos os casos)
+        pass#s.quit()  # Fechar conexão com servidor SMTP (em todos os casos)
     except:
         pass
+
+#sbeu oygy wnsn wfxu
 
 style.use("fivethirtyeight")
 
@@ -65,6 +68,8 @@ def animar(i):
         ys.append(ran.randint(16, 19))
     if keyboard.is_pressed('t'):
         ys[:] = [40] * len(ys)
+        s.send_message(message)
+        print("Email enviado com sucesso!") # Aviso de mensagem bem sucedida
     dimen.clear()
     dimen.plot(xs, ys)
     dimen.set_ylabel('Temperatura(C°)')
