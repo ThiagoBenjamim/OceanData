@@ -6,11 +6,7 @@ from ultralytics import YOLO
 COLORS = [(0, 255, 255), (255, 255, 0), (0, 255, 0), (255, 0, 0), (0, 0, 255), (255, 0, 255), (128, 0, 0), (0, 128, 0), (0, 0, 128)]
 
 # Carregar o modelo YOLOv8 pré-treinado
-# Para detecção de vida marinha, você pode tentar modelos como 'yolov8n.pt' (treinado no COCO, que pode ter algumas classes de animais) ou
-# um modelo customizado treinado em um dataset de vida marinha, se disponível.
-# Por enquanto, usaremos 'yolov8n.pt' como um exemplo genérico.
-# Você pode substituir 'yolov8n.pt' por um modelo específico de vida marinha se encontrar um.
-model = YOLO('FishInv.pt')  # Carrega um modelo YOLOv8 pré-treinado
+model = YOLO('FishInv.pt')
 
 # Obter os nomes das classes do modelo
 class_names = model.names
@@ -31,8 +27,6 @@ while True:
     start = time.time()
 
     # Realizar a detecção com YOLOv8
-    # confidence=0.25 é o limite de confiança padrão, pode ser ajustado
-    # iou=0.7 é o limite de IoU para Non-Maximum Suppression (NMS), pode ser ajustado
     results = model.predict(frame, conf=0.25, iou=0.7, verbose=False)
 
     end = time.time()
