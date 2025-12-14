@@ -6,9 +6,6 @@ from matplotlib import style
 import random as ran
 import keyboard
 import pylab as p
-import cv2
-import time
-from ultralytics import YOLO
 
 SMTPPort = 465 # Foi a única porta que funcionou até agora
 emailLogin = input("Digite o email do remetente:").strip() # Email do Remetente
