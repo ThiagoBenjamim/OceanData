@@ -6,13 +6,13 @@ from ultralytics import YOLO
 COLORS = [(0, 255, 255), (255, 255, 0), (0, 255, 0), (255, 0, 0), (0, 0, 255), (255, 0, 255), (128, 0, 0), (0, 128, 0), (0, 0, 128)]
 
 # Carregar o modelo YOLOv8 pré-treinado
-model = YOLO('FishInv.pt')
+model = YOLO("Detecção de imagem\FishInv.pt")
 
 # Obter os nomes das classes do modelo
 class_names = model.names
 
 # Inicializar a captura de vídeo
-cap = cv2.VideoCapture("./fish.mp4") # Use 0 para a webcam padrão
+cap = cv2.VideoCapture("Detecção de imagem\\fish.mp4") # Use 0 para a webcam padrão
 
 if not cap.isOpened():
     print("Erro: Não foi possível abrir a câmera.")
